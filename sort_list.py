@@ -1,18 +1,11 @@
 class sorter:
-    def from_smallest_to_largest():
-        list=[]
-        for i in range(5):
-            element = int(input())
-            list.append(element)
-        list.sort()
-        print(list)
-    def from_largest_to_smallest():
-        list1=[]
-        for i in range(5):
-            element0=int(input())
-            list1.append(element0)
-        list1.sort()
-        list1.sort(reverse=True)
-        print(list1)
-    from_smallest_to_largest()
-    from_largest_to_smallest()
+    def sort(list,sort):
+            if sort == "1":
+                sorted_list = sorted(list)
+                print(sorted_list)
+            elif sort == "2":
+                sorted_list = sorted(list, reverse=True)
+                print(sorted_list)
+            else:
+                print("incorrecn input")
+    sort([5,7,3,8,0], str(input("choose number(1,2)  ")))
