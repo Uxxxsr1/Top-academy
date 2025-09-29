@@ -36,3 +36,4 @@ elif inp3 == 3:
     write_file()
 else:
     print("err")
+
