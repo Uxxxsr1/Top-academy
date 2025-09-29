@@ -1,32 +1,38 @@
-%matplotlib inline
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
+import os
 
-# Читаем CSV файл
-df = pd.read_csv('bd.csv')
 
-# Создаем график
-plt.figure(figsize=(12, 7))
+def open_xml():
+    os.system('cls')
+    inp1 = input("Input name of your file(XXX.xml):  ")
+    file_xml = inp1
+    with open(file_xml, 'r+') as f:
+        xml_string = f.read()
+    print(xml_string)
+def open_json():
+    os.system('cls')
+    inp2 = input("Input name of file(XXX.json):  ")
+    file_json = inp2
+    with open(file_json, 'r+') as f:
+        json_string = f.read()
+    print(json_string)
+def write_file():
+    inp4 = input("input name of file:  ")
+    message = input("Введите строку: ")
+    with open(inp4, 'r') as file:
+        file.read()
+    with open(inp4, "w") as file:
+        file.write(message)
+        #file.read()
 
-# График продаж
-plt.plot(df['Month'], df['Sales'], 'o-', linewidth=3, markersize=8, label='Продажи', color='blue')
 
-# График расходов
-plt.plot(df['Month'], df['Expenses'], 's--', linewidth=3, markersize=8, label='Расходы', color='red')
-
-# Настраиваем внешний вид
-plt.title('Динамика продаж и расходов', fontsize=16, fontweight='bold')
-plt.xlabel('Месяц', fontsize=14)
-plt.ylabel('Сумма ($)', fontsize=14)
-plt.grid(True, alpha=0.3)
-plt.legend(fontsize=12)
-plt.xticks(rotation=45)
-
-# Добавляем аннотации
-for i, (sales, expenses) in enumerate(zip(df['Sales'], df['Expenses'])):
-    plt.annotate(f'{sales}', (i, sales), textcoords="offset points", xytext=(0,10), ha='center')
-    plt.annotate(f'{expenses}', (i, expenses), textcoords="offset points", xytext=(0,-15), ha='center')
-
-plt.tight_layout()
-plt.show()
+os.system("cls")
+print("Selct json 1 /xml 2, edit 3")
+inp3 = int(input(":  "))
+if inp3 == 1:
+    open_json()
+elif inp3 == 2:
+    open_xml()
+elif inp3 == 3:
+    write_file()
+else:
+    print("err")
