@@ -1,6 +1,6 @@
 class sorter:
     def sort(list,sort):
-            if sort == "1":
+            if sort == "2":
                 sorted_list = sorted(list)
                 print(sorted_list)
             elif sort == "2":
