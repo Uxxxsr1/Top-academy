@@ -1,39 +1,84 @@
-import os
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
+    def __str__(self):
+        return str(self.data)
 
-def open_xml():
-    os.system('cls')
-    inp1 = input("Input name of your file(XXX.xml):  ")
-    file_xml = inp1
-    with open(file_xml, 'r+') as f:
-        xml_string = f.read()
-    print(xml_string)
-def open_json():
-    os.system('cls')
-    inp2 = input("Input name of file(XXX.json):  ")
-    file_json = inp2
-    with open(file_json, 'r+') as f:
-        json_string = f.read()
-    print(json_string)
-def write_file():
-    inp4 = input("input name of file:  ")
-    message = input("Введите строку: ")
-    with open(inp4, 'r') as file:
-        file.read()
-    with open(inp4, "w") as file:
-        file.write(message)
-        #file.read()
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.size = 0
 
+    def isEmpty(self):
+        return self.head is None
 
-os.system("cls")
-print("Selct json 1 /xml 2, edit 3")
-inp3 = int(input(":  "))
-if inp3 == 1:
-    open_json()
-elif inp3 == 2:
-    open_xml()
-elif inp3 == 3:
-    write_file()
-else:
-    print("err")
+    def __str__(self):
+        if self.isEmpty():
+            return 'Empty list'
+        elements = []
+        current = self.head
+        while current:
+            elements.append(str(current.data))
+            current = current.next
+        return ' -> '.join(elements) + ' -> None'
 
+    def getSize(self):
+        return self.size
+
+    def addFistr(self, data):
+        new_node = Node(data)
+        new_node.next =self.head
+        self.head = new_node
+        self.size += 1
+
+    def add_Fistr(self, data):
+        new_node = Node(data)
+        #self.head = new_node
+        #self.size += 1
+        if self.isEmpty():
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+        self.size += 1
+
+    def removeFirst(self):
+        if self.isEmpty():
+            return 'This list is already empthy'
+        remomeData = self.head.data
+        self.head = self.head.next
+        self.head -= 1
+        return remomeData
+    def searcheElement(self, value):
+        count = 0
+        current = self.head
+        if self.isEmpty():
+            return 'This lis is aredly empthy'
+        else:
+            while current:
+                if current.data == value:
+                    count += 1
+                    print(f'{count}: {value}')
+                current = current.next
+    def searcheMaxElement(self):
+        if self.isEmpty():
+            return 'This lis is aredly empthy'
+        current = self.head
+        maxValue = current.data
+        while current:
+            if current.data > maxValue:
+                maxValue = current.data
+            current = current.next
+        print(maxValue)
+list0 = LinkedList()
+list0.addFistr(11)
+list0.addFistr(12)
+list0.addFistr(2)
+list0.addFistr(67)
+list0.searcheElement(2)
+list0.searcheElement(67)
+list0.searcheElement(12)
+list0.searcheMaxElement()
