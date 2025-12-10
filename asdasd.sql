@@ -1,0 +1,80 @@
+-- -- create database magazinchik
+-- -- go
+
+-- IF NOT EXISTS (SELECT *
+-- FROM sys.databases
+-- WHERE name = 'magazinchik')
+--     CREATE DATABASE magazinchik;
+-- GO
+
+-- USE magazinchik
+-- GO
+
+-- IF OBJECT_ID('prodajy', 'U') IS NOT NULL DROP TABLE prodajy;
+-- IF OBJECT_ID('pokypatel', 'U') IS NOT NULL DROP TABLE pokypatel;
+-- IF OBJECT_ID('prodavchy', 'U') IS NOT NULL DROP TABLE prodavchy;
+
+-- create table prodavchy
+-- (
+--     Id int IDENTITY(1,1) primary key,
+--     FullName nvarchar(200) not null,
+--     NumberOfPhone nvarchar(11) not null,
+--     email nvarchar(200) not null check(
+--         email like '%@%.%'
+--     )
+-- );
+
+-- create table pokypatel
+-- (
+--     Id int IDENTITY(1,1) primary key,
+--     FullName nvarchar(200) not null,
+--     NumberOfPhone nvarchar(11) not null,
+--     email nvarchar
+--     (200) not null check
+--     (
+--             email like '%@%.%'
+--         )
+-- );
+
+-- create table prodajy
+-- (
+--     Id int IDENTITY(1,1) primary key,
+--     ProdavchyId int not null,
+--     PokypatelId int not null,
+--     NameOfTovar nvarchar(50) not null,
+--     DataSdelki date not null,
+--     foreign key (ProdavchyId) references prodavchy(Id),
+--     foreign key (PokypatelId) references pokypatel(Id)
+-- );
+-- -- INSERT INTO prodavchy
+-- --     (FullName, NumberOfPhone, email)
+-- -- VALUES
+-- --     ('Иванов Иван Иванович', '79161234567', 'ivanov@mail.ru'),
+-- --     ('Петрова Анна Сергеевна', '79269876543', 'petrova@yandex.ru'),
+-- --     ('Сидоров Алексей Владимирович', '79031112233', 'sidorov@gmail.com'),
+-- --     ('Козлова Мария Дмитриевна', '79557778899', 'kozlova@mail.ru'),
+-- --     ('Федоров Дмитрий Петрович', '79990001122', 'fedorov@yandex.ru');
+-- -- INSERT INTO pokypatel
+-- --     (FullName, NumberOfPhone, email)
+-- -- VALUES
+-- --     ('Смирнов Андрей Викторович', '79165554433', 'smirnov@mail.ru'),
+-- --     ('Волкова Екатерина Игоревна', '79261119988', 'volkova@yandex.ru'),
+-- --     ('Новиков Павел Александрович', '79032226677', 'novikov@gmail.com'),
+-- --     ('Морозова Ольга Николаевна', '79553334455', 'morozova@mail.ru'),
+-- --     ('Лебедев Сергей Олегович', '79998887766', 'lebedev@yandex.ru'),
+-- --     ('Ковалева Татьяна Валерьевна', '79160001122', 'kovaleva@gmail.com'),
+-- --     ('Захаров Артем Денисович', '79263334455', 'zakharov@mail.ru');
+-- -- INSERT INTO prodajy
+-- --     (ProdavchyId, PokypatelId, NameOfTovar, DataSdelki)
+-- -- VALUES
+-- --     (1, 1, 'Ноутбук', '2024-01-15'),
+-- --     (2, 2, 'Смартфон', '2024-01-18'),
+-- --     (3, 3, 'Телевизор', '2024-01-20'),
+-- --     (4, 4, 'Холодильник', '2024-01-22'),
+-- --     (5, 5, 'Стиральная машина', '2024-01-25'),
+-- --     (1, 6, 'Планшет', '2024-01-28'),
+-- --     (2, 7, 'Наушники', '2024-01-30'),
+-- --     (3, 1, 'Ноутбук', '2024-02-01'),
+-- --     (4, 2, 'Микроволновая печь', '2024-02-03'),
+-- --     (5, 3, 'Пылесос', '2024-02-05');
+select * from prodajy;
